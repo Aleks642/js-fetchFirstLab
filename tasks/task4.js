@@ -4,8 +4,17 @@
 "https://jsonplaceholder.typicode.com/users - адреса куди робити запит"
 
 
-function deleteUser(id) {
-  // Ваш код
+async function deleteUser(id) {
+  try {
+    const response = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`, {
+      method: 'DELETE'
+    });
+
+    return { status: response.status };
+  } catch (error) {
+    console.error("Error deleting user:", error);
+    return null;
+  }
 }
 
 console.log(deleteUser(1));
